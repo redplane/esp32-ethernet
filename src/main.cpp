@@ -12,12 +12,14 @@ char server[] = "www.google.com";    // name address for Google (using DNS)
 EthernetClient client;
 
 void setup() {
+
     // Open serial communications and wait for port to open:
     Serial.begin(115200);
     while (!Serial) { ;
     }
 
-    Ethernet.init(2);
+    SPI.begin(18, 19, 23, 5);
+    Ethernet.init(5);
     Ethernet.begin(mac);
     // start the Ethernet connection:
     if (Ethernet.begin(mac) == 0) {
